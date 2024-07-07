@@ -12,9 +12,10 @@ This action combines two input files into a single output file.
 
 ```yaml
 steps:
-- uses: stellarhub/telegram-message-action@v1
+- name: Send Telegram messsage
+  uses: stellarhub/telegram-message-action@v1
   with:
-    token: 'the token you received from Bot Father'
-    chat_id: '-11111111111'
-    message: 'The message to telegram'
-
+    chat_id: ${{ vars.TELEGRAM_CHAT_ID }}
+    token: ${{ secrets.TELEGRAM_TOKEN }}
+    message: "Your message"
+```
