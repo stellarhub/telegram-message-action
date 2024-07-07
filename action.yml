@@ -1,0 +1,23 @@
+name: 'Send Telegram message'
+description: 'Send Telegram message'
+author: 'Barry'
+inputs:
+  token:
+    description: 'Token'
+    required: true
+  chat_id:
+    description: 'Chat ID'
+    required: true
+  message:
+    description: 'Message'
+    required: true
+runs:
+  using: 'composite'
+  steps:
+    - run: |
+        curl -s -X POST "https://api.telegram.org/bot${{ inputs.token }}/sendMessage" -d chat_id=${{ inputs.chat_id }} -d text="${{ inputs.message }}"
+      shell: bash
+branding:
+  icon: 'file-text'
+  color: 'blue'
+  
